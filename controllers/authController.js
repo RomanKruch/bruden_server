@@ -72,7 +72,8 @@ const onLogin = async (req, res, next) => {
           email: user.email
         },
         token,
-        cart: user.cart
+        cart: user.cart,
+        liked: user.liked
       },
     });
   } catch (error) {
