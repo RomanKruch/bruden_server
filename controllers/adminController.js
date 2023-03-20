@@ -54,6 +54,7 @@ const onAddProduct = async (req, res, next) => {
 
 const onAddTag = async (req, res, next) => {
   try {
+    console.log(1);
     const tag = await findTagByName(req.body.name);
 
     if (tag) {
@@ -65,13 +66,13 @@ const onAddTag = async (req, res, next) => {
         }
       })
     }
-
+    console.log(req.file);
     const { public_id: imgId, secure_url: img } = await uploadCloud(req.file.path, {
       folder: 'Bruden',
       transformation: { width: 360, height: 290, crop: 'fill' },
     });
     await fs.unlink(req.file.path);
-
+    console.log(3);
     const newTag = await addTag({...req.body, imgId, img});
 
     return res.status(HTTP.CREATE).json({

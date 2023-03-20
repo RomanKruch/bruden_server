@@ -54,7 +54,7 @@ const onLogin = async (req, res, next) => {
         status: 'error',
         code: HTTP.UNAUTHORIZED,
         data: {
-          massage: 'Unauthorized',
+          massage: 'Invalid email or password',
         },
       });
     }
